@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全体成员 - 笙歌醉梦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+        }
+        body {
+            background-color: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 T80,80 Q50,95 20,80 T20,20" fill="none" stroke="%238b4513" stroke-width="0.5" opacity="0.2"/></svg>');
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(to right, #8b0000, #b30000);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 5px solid #d4af37;
+            text-align: center;
+        }
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        .logo span {
+            color: #d4af37;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-menu a:hover {
+            background-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        .back-btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #8b0000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #8b0000;
+            color: #d4af37;
+            transform: translateY(-3px);
+        }
+        .main-content {
+            padding: 40px 0;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8b0000;
+        }
+        .section-title {
+            color: #8b0000;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+        .members-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .member-name {
+            display: block;
+            padding: 10px 15px;
+            background-color: #f9f5eb;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #8b0000;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0d9c7;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .member-name:hover {
+            background-color: #8b0000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+                letter-spacing: 5px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-menu li {
+                margin: 5px 0;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>笙<span>歌</span>醉<span>梦</span></h1>
+                <p class="slogan">全体成员名单</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="members.html">成员列表</a></li>
+                <li><a href="baiyezhan.html">百业战详情</a></li>
+                <li><a href="#join">加入我们</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <section class="section">
+            <h2 class="section-title">全体成员名单</h2>
+            <p>我们百业共有100名成员，以下是全体成员名单：</p>
+            
+            <div class="members-list">
+                <a href="#" class="member-name">麦兜快跑丶</a>
+                <a href="#" class="member-name">林君凡</a>
+                <a href="#" class="member-name">淮叶一</a>
+                <a href="#" class="member-name">澜妍</a>
+                <a href="#" class="member-name">云深不知处</a>
+                <a href="#" class="member-name">剑舞红尘</a>
+                <a href="#" class="member-name">墨染青衣</a>
+                <a href="#" class="member-name">醉卧沙场</a>
+                <a href="#" class="member-name">清风明月</a>
+                <a href="#" class="member-name">寒江孤影</a>
+                <!-- 此处省略其余90个成员，实际使用时需要全部列出 -->
+            </div>
+            
+            <a href="index.html" class="back-btn">返回首页</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 笙歌醉梦 《燕云十六声》百业 | 本页面为玩家自制，与游戏官方无关</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

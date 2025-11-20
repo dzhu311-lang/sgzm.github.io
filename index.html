@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笙歌醉梦 - 《燕云十六声》百业</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+        }
+        body {
+            background-color: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 T80,80 Q50,95 20,80 T20,20" fill="none" stroke="%238b4513" stroke-width="0.5" opacity="0.2"/></svg>');
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, #8b0000, #b30000);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 5px solid #d4af37;
+            text-align: center;
+        }
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        .logo span {
+            color: #d4af37;
+        }
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 10px;
+            color: #f0e0c0;
+        }
+        
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-menu a:hover {
+            background-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* 横幅样式 */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="%238b0000"/><path d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z" fill="%23b30000"/><path d="M0,200 Q300,300 600,200 T1200,200" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        .banner-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            padding: 40px 0;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8b0000;
+        }
+        .section-title {
+            color: #8b0000;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        /* 百业类型展示 */
+        .career-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .career-card {
+            background: #f9f5eb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #8b0000;
+        }
+        .career-card:hover {
+            transform: translateY(-10px);
+        }
+        .career-icon {
+            background-color: #8b0000;
+            color: #fff;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        .career-content {
+            padding: 20px;
+        }
+        .career-content h3 {
+            color: #8b0000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* 成员展示 */
+        .members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .member-card {
+            background: #f9f5eb;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #d4af37;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b0000;
+            font-size: 1.8rem;
+        }
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #8b0000;
+        }
+        .member-role {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 活动与公告 */
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .activity-card {
+            background: #f9f5eb;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .activity-title {
+            color: #8b0000;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .activity-date {
+            color: #d4af37;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* 活动卡片链接样式 */
+        .activity-link-card {
+            background: #f9f5eb;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .activity-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            background: #f0e6d3;
+        }
+        .activity-link-indicator {
+            color: #8b0000;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: right;
+            transition: all 0.3s ease;
+        }
+        .activity-link-card:hover .activity-link-indicator {
+            transform: translateX(5px);
+        }
+        
+        /* 全体成员模块样式 */
+        .all-members-card {
+            background: #f9f5eb;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border: 2px dashed #8b0000;
+            margin-top: 20px;
+        }
+        .all-members-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: #f0e6d3;
+            border-style: solid;
+        }
+        .all-members-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #8b0000;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 2.5rem;
+        }
+        .all-members-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #8b0000;
+            font-size: 1.5rem;
+        }
+        .all-members-desc {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* 联系方式 */
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background-color: #8b0000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: #d4af37;
+            color: #8b0000;
+            transform: translateY(-3px);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .footer-column h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: #d4af37;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+                letter-spacing: 5px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-menu li {
+                margin: 5px 0;
+            }
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>笙<span>歌</span>醉<span>梦</span></h1>
+                <p class="slogan">一曲笙歌醉梦间，半卷诗书话江湖</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="members.html">成员列表</a></li>
+                <li><a href="baiyezhan.html">百业战详情</a></li>
+                <li><a href="#join">加入我们</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 横幅 -->
+    <section class="banner">
+        <div class="banner-content">
+            <h2>欢迎来到「笙歌醉梦」百业</h2>
+            <p>《燕云十六声》中一个融合探索、休闲与战斗的多元社群</p>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <div class="container main-content">
+        <!-- 百业介绍 -->
+        <section id="about" class="section">
+            <h2 class="section-title">百业介绍</h2>
+            <p>「笙歌醉梦」是《燕云十六声》游戏中的一个百业社群，我们致力于为各类玩家提供丰富的游戏体验。无论您是喜欢单人探索的独行侠，享受悠闲自在的休闲玩家，还是热衷于团队作战的社交达人，这里都有您的专属舞台。</p>
+            
+            <div class="career-types">
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="career-content">
+                        <h3>天涯阁 - 探索型</h3>
+                        <p>专为热爱探索的玩家设计，可以单人挑战高难度BOSS，展示操作实力，也可以在联机探索时一举多得，共同收获百业奖励</p>
+                    </div>
+                </div>
+                
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="career-content">
+                        <h3>长乐坊 - 休闲型</h3>
+                        <p>休闲玩家的乐园，每周奖励效率更高，可以自在躺平、轻松休闲，打打麻将、倒卖物品赚钱，轻松不肝</p>
+                    </div>
+                </div>
+                
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="career-content">
+                        <h3>金戈帮 - 战斗型</h3>
+                        <p>战斗爱好者的天堂，强调多人环境下的战斗，适合喜欢PVP和多人副本的玩家，有机会在"百业战"中大展身手</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 成员风采 -->
+        <section id="members" class="section">
+            <h2 class="section-title">成员风采</h2>
+            <p>我们百业由一群热爱《燕云十六声》的玩家组成，这里有经验丰富的老玩家，也有充满热情的新人。</p>
+            
+            <div class="members">
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="member-name">麦兜快跑丶</div>
+                    <div class="member-role">社主</div>
+                </div>
+                
+                <a href="members.html" class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-chess-knight"></i>
+                    </div>
+                    <div class="member-name">林君凡</div>
+                    <div class="member-role">金戈帮主</div>
+                </a>
+                
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="member-name">淮叶一</div>
+                    <div class="member-role">天涯阁主</div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="member-name">澜妍</div>
+                    <div class="member-role">长乐坊主</div>
+                </div>
+            </div>
+            
+            <!-- 全体成员模块 -->
+            <a href="members.html" class="all-members-card">
+                <div class="all-members-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="all-members-title">查看全体成员</div>
+                <div class="all-members-desc">点击查看我们百业的100名成员名单</div>
+                <div class="contact-btn">查看全部成员</div>
+            </a>
+        </section>
+        
+        <!-- 百业活动 -->
+        <section id="activities" class="section">
+            <h2 class="section-title">百业活动</h2>
+            <p>我们定期组织各类活动，让成员们能够充分体验游戏的乐趣，增进彼此之间的友谊。</p>
+            
+            <div class="activities">
+                <!-- 百业战活动卡片 - 可点击跳转 -->
+                <a href="baiyezhan.html" class="activity-link-card">
+                    <h3 class="activity-title">百业战</h3>
+                    <div class="activity-date">每周六、日晚上8:30</div>
+                    <p>参与百业战，与其他百业一较高下，争夺荣耀和奖励。我们提供战术指导和团队配合训练。</p>
+                    <div class="activity-link-indicator">点击查看详情 →</div>
+                </a>
+                
+                <div class="activity-card">
+                    <h3 class="activity-title">斗财主</h3>
+                    <div class="activity-date">每周三、五晚上</div>
+                    <p>轻松愉快的叶子戏对决，薅秃财主不眨眼，决战到天明！</p>
+                </div>
+                
+                <div class="activity-card">
+                    <h3 class="activity-title">团队副本</h3>
+                    <div class="activity-date">每周固定时间</div>
+                    <p>组织团队成员挑战高难度副本，分享攻略心得，共同提升实力。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 加入我们 -->
+        <section id="join" class="section">
+            <h2 class="section-title">加入我们</h2>
+            <p>「笙歌醉梦」百业欢迎各位游侠的加入！我们注重游戏乐趣而非强制活跃度考核，无论您是工作党还是学生党，都能在这里找到属于自己的江湖。</p>
+            <p>我们百业内有来自不同年龄段的玩家，大家都非常好交流，来了就是一家人。即使不加入百业，也欢迎来我们的聊天群交流游戏心得。</p>
+            
+            <h3 style="margin: 20px 0 10px; color: #8b0000;">加入条件</h3>
+            <ul style="padding-left: 20px; margin-bottom: 20px;">
+                <li>热爱《燕云十六声》游戏</li>
+                <li>遵守游戏规则，尊重其他玩家</li>
+                <li>每周有一定活跃度（不强制要求）</li>
+                <li>积极参与百业活动和建设</li>
+            </ul>
+        </section>
+        
+        <!-- 联系我们 -->
+        <section id="contact" class="section">
+            <h2 class="section-title">联系我们</h2>
+            <p>如果您对我们的百业感兴趣，想了解更多信息或申请加入，欢迎通过以下方式联系我们：</p>
+            
+            <div class="contact-methods">
+                <a href="#" class="contact-btn">QQ群：123456789</a>
+                <a href="#" class="contact-btn">微信公众号：笙歌醉梦</a>
+                <a href="#" class="contact-btn">游戏内搜索：笙歌醉梦</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <p>「笙歌醉梦」是《燕云十六声》游戏中的一个百业社群，致力于为玩家提供丰富的游戏体验和友好的交流环境。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="members.html">成员列表</a></li>
+                        <li><a href="baiyezhan.html">百业战详情</a></li>
+                        <li><a href="#join">加入我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>游戏相关</h3>
+                    <ul>
+                        <li><a href="#">《燕云十六声》官网</a></li>
+                        <li><a href="#">百业系统介绍</a></li>
+                        <li><a href="#">游戏攻略</a></li>
+                        <li><a href="#">最新更新公告</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 笙歌醉梦 《燕云十六声》百业 | 本页面为玩家自制，与游戏官方无关</p>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>

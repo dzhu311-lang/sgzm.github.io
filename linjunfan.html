@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林君凡 - 金戈帮主 | 笙歌醉梦</title>
+    <style>
+        /* 基础样式 - 与第一个页面保持一致 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+        }
+        body {
+            background-color: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 T80,80 Q50,95 20,80 T20,20" fill="none" stroke="%238b4513" stroke-width="0.5" opacity="0.2"/></svg>');
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, #8b0000, #b30000);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 5px solid #d4af37;
+            text-align: center;
+        }
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        .logo span {
+            color: #d4af37;
+        }
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 10px;
+            color: #f0e0c0;
+        }
+        
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-menu a:hover {
+            background-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* 横幅样式 */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="%238b0000"/><path d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z" fill="%23b30000"/><path d="M0,200 Q300,300 600,200 T1200,200" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        .banner-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            padding: 40px 0;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8b0000;
+        }
+        .section-title {
+            color: #8b0000;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        /* 个人信息卡片 */
+        .profile-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 768px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+        }
+        .profile-avatar {
+            background-color: #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b0000;
+            font-size: 6rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info {
+            padding: 20px 0;
+        }
+        .profile-name {
+            color: #8b0000;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .profile-role {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .profile-desc {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stat-item {
+            background-color: #f9f5eb;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        .stat-value {
+            color: #8b0000;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 图片上传和展示区域 */
+        .image-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .image-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        .upload-area {
+            border: 2px dashed #8b0000;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #f9f5eb;
+        }
+        .upload-area:hover {
+            background-color: #f0e6d3;
+        }
+        .upload-icon {
+            font-size: 48px;
+            color: #8b0000;
+            margin-bottom: 15px;
+        }
+        .upload-text {
+            color: #8b0000;
+            font-weight: 500;
+        }
+        #file-input {
+            display: none;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(139, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .delete-btn {
+            opacity: 1;
+        }
+        
+        /* 联系方式 */
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background-color: #8b0000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: #d4af37;
+            color: #8b0000;
+            transform: translateY(-3px);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .footer-column h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: #d4af37;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+                letter-spacing: 5px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-menu li {
+                margin: 5px 0;
+            }
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+            .section {
+                padding: 20px;
+            }
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>笙<span>歌</span>醉<span>梦</span></h1>
+                <p class="slogan">一曲笙歌醉梦间，半卷诗书话江湖</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="members.html">成员列表</a></li>
+                <li><a href="baiyezhan.html">百业战详情</a></li>
+                <li><a href="#join">加入我们</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 横幅 -->
+    <section class="banner">
+        <div class="banner-content">
+            <h2>林君凡 - 金戈帮主</h2>
+            <p>笙歌醉梦百业战斗核心，金戈帮领军人物</p>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <div class="container main-content">
+        <!-- 个人信息 -->
+        <section id="profile" class="section">
+            <h2 class="section-title">个人信息</h2>
+            
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <i class="fas fa-chess-knight"></i>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">林君凡</h2>
+                    <div class="profile-role">金戈帮主 · 战斗指挥</div>
+                    <p class="profile-desc">
+                        林君凡是「笙歌醉梦」百业中金戈帮的帮主，负责百业战斗相关事务的组织和指挥。
+                        他精通各类战斗技巧，擅长团队配合与战术布置，在多次百业战中带领团队取得优异成绩。
+                    </p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">98</div>
+                            <div class="stat-label">战斗胜率</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">百业战参与</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">42</div>
+                            <div class="stat-label">指挥次数</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 图片上传和展示 -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">个人风采</h2>
+            <p>上传和展示林君凡的游戏截图、装备展示或战斗精彩瞬间。</p>
+            
+            <div class="image-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">点击或拖拽图片到这里上传</div>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*" multiple>
+                    <p style="text-align: center; color: #7f8c8d; margin-top: 10px;">支持 JPG, PNG, GIF 格式，最大 5MB</p>
+                </div>
+                
+                <div class="gallery-card">
+                    <h3 style="color: #8b0000; margin-bottom: 15px;">图片展示</h3>
+                    <div class="gallery" id="image-gallery">
+                        <div class="placeholder-text" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #95a5a6;">
+                            暂无图片，请上传图片以查看
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 战斗记录 -->
+        <section id="battle-records" class="section">
+            <h2 class="section-title">战斗记录</h2>
+            <p>林君凡参与的百业战记录和成就。</p>
+            
+            <div style="margin-top: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #f9f5eb; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #8b0000; margin-bottom: 10px;">最近战绩</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>百业战 #156 - 胜利 (MVP)</li>
+                            <li>百业战 #154 - 胜利</li>
+                            <li>百业战 #152 - 胜利 (MVP)</li>
+                            <li>百业战 #149 - 胜利</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #f9f5eb; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #8b0000; margin-bottom: 10px;">战斗风格</h3>
+                        <p>擅长使用长剑和弓箭，战斗风格灵活多变，既能近身搏斗，也能远程输出。特别擅长在团队战中寻找敌方弱点，实施精准打击。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系方式 -->
+        <section id="contact" class="section">
+            <h2 class="section-title">联系林君凡</h2>
+            <p>如果您想与林君凡交流战斗技巧或讨论百业战战术，可以通过以下方式联系：</p>
+            
+            <div class="contact-methods">
+                <a href="#" class="contact-btn">游戏内私信</a>
+                <a href="#" class="contact-btn">QQ: 123456789</a>
+                <a href="#" class="contact-btn">微信群: 笙歌醉梦金戈帮</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <p>「笙歌醉梦」是《燕云十六声》游戏中的一个百业社群，致力于为玩家提供丰富的游戏体验和友好的交流环境。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="members.html">成员列表</a></li>
+                        <li><a href="baiyezhan.html">百业战详情</a></li>
+                        <li><a href="#join">加入我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>游戏相关</h3>
+                    <ul>
+                        <li><a href="#">《燕云十六声》官网</a></li>
+                        <li><a href="#">百业系统介绍</a></li>
+                        <li><a href="#">游戏攻略</a></li>
+                        <li><a href="#">最新更新公告</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 笙歌醉梦 《燕云十六声》百业 | 本页面为玩家自制，与游戏官方无关</p>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-input');
+            const imageGallery = document.getElementById('image-gallery');
+            const placeholderText = document.querySelector('.placeholder-text');
+            
+            // 点击上传区域触发文件选择
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            // 拖拽上传功能
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = '#f0e6d3';
+            });
+            
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.style.backgroundColor = '#f9f5eb';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = '#f9f5eb';
+                
+                if (e.dataTransfer.files.length) {
+                    handleFiles(e.dataTransfer.files);
+                }
+            });
+            
+            // 文件选择处理
+            fileInput.addEventListener('change', function() {
+                if (this.files.length) {
+                    handleFiles(this.files);
+                    this.value = ''; // 重置文件输入
+                }
+            });
+            
+            // 处理上传的文件
+            function handleFiles(files) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    
+                    // 检查文件类型
+                    if (!file.type.match('image.*')) {
+                        alert('请上传图片文件！');
+                        continue;
+                    }
+                    
+                    // 检查文件大小（5MB限制）
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('文件大小不能超过5MB！');
+                        continue;
+                    }
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        // 移除占位文本
+                        if (placeholderText) {
+                            placeholderText.style.display = 'none';
+                        }
+                        
+                        // 创建图片展示元素
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.alt = '上传的图片';
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-btn';
+                        deleteBtn.innerHTML = '×';
+                        deleteBtn.onclick = function() {
+                            galleryItem.remove();
+                            // 如果没有图片了，显示占位文本
+                            if (imageGallery.children.length === 0) {
+                                placeholderText.style.display = 'block';
+                            }
+                        };
+                        
+                        galleryItem.appendChild(img);
+                        galleryItem.appendChild(deleteBtn);
+                        imageGallery.appendChild(galleryItem);
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
